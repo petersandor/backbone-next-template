@@ -1,0 +1,50 @@
+{
+  "name": "backbone-next-template",
+  "version": "0.0.1",
+  "description": "Template for ES6+ Backbone.js projects written in TypeScript and built with Webpack",
+  "scripts": {
+    "start": "webpack-dev-server --env development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petersandor/backbone-next-template.git"
+  },
+  "keywords": [
+    "backbone",
+    "typescript",
+    "webpack"
+  ],
+  "author": "Peter Sandor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/petersandor/backbone-next-template/issues"
+  },
+  "homepage": "https://github.com/petersandor/backbone-next-template#readme",
+  "dependencies": {
+    "backbone": "^1.3.3",
+    "handlebars": "^4.0.10",
+    "jquery": "^3.2.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "@types/backbone": "^1.3.34",
+    "@types/handlebars": "^4.0.33",
+    "@types/jquery": "^3.2.5",
+    "@types/underscore": "^1.8.1",
+    "awesome-typescript-loader": "^3.2.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "handlebars-loader": "^1.5.0",
+    "html-webpack-harddisk-plugin": "^0.1.0",
+    "html-webpack-plugin": "^2.29.0",
+    "source-map-loader": "^0.2.1",
+    "tslint": "latest",
+    "typescript": "^2.3.4",
+    "webpack": "^3.0.0",
+    "webpack-bundle-analyzer": "^2.8.2",
+    "webpack-dev-server": "^2.5.0",
+    "webpack-dotenv-plugin": "^2.0.2"
+  }
+}
