@@ -2,7 +2,12 @@ import * as Backbone from 'backbone';
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 
-export default class AppRouter extends Backbone.Router {
+import App from '../views/app/app.view';
+import { IBaseViewOptions } from '../views/base/base.view';
+
+class AppRouter extends Backbone.Router {
+
+	application: App;
 
 	constructor(options: Backbone.RouterOptions = { routes: void 0 }) {
 		super(_.defaults(options, {
@@ -12,7 +17,13 @@ export default class AppRouter extends Backbone.Router {
 		}));
 	}
 
+	initialize(options: Backbone.RouterOptions): void {
+		this.application = new App();
+	}
+
 	private home() {
-		console.log('should be called');
+		this.application.showHomePage();
 	}
 }
+
+export default AppRouter;

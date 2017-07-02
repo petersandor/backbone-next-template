@@ -30,7 +30,7 @@ const config = {
 		filename: '[name].[hash].js'
 	},
 	resolve: {
-		extensions: ['.ts', '.js', '.json'],
+		extensions: ['.ts', '.js', '.json', '.hbs'],
 		modules: ['src', 'node_modules'],
 		alias: {
 			app: path.resolve(__dirname, 'src'),

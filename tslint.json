@@ -8,7 +8,8 @@
 		"quotemark": [true, "single"],
 		"indent": [true, "tabs", 2],
 		"no-console": [false],
-		"trailing-comma": [false]
+		"trailing-comma": [false],
+		"member-access": [false]
 	},
 	"rulesDirectory": []
 }
