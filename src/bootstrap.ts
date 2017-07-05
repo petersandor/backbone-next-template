@@ -3,7 +3,7 @@ import * as Handlebars from 'handlebars';
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 
-import AppRouter from './routers/app.router';
+import AppRouter from './routers/app/app.router';
 
 const historyOptions: Backbone.HistoryOptions = {
 	pushState: true,

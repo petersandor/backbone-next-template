@@ -17,7 +17,8 @@
 			"backbone",
 			"jquery",
 			"underscore",
-			"handlebars"
+			"handlebars",
+			"jest"
 		]
 	},
 	"include": [

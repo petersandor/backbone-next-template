@@ -4,7 +4,7 @@ import { IBaseViewOptions } from '../base/base.view';
 import PageView from '../page/page.view';
 
 @tagName('home-page')
-@template(require('./home-page.template'))
+@template(require('./home-page.template.hbs'))
 class HomePageView extends PageView {
 
 	constructor(options: IBaseViewOptions = {
