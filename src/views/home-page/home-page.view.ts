@@ -1,15 +1,15 @@
-import { template } from 'backbone-decorators';
+import { tagName, template } from 'backbone-decorators';
 
 import { IBaseViewOptions } from '../base/base.view';
 import PageView from '../page/page.view';
 
+@tagName('home-page')
 @template(require('./home-page.template'))
 class HomePageView extends PageView {
 
 	constructor(options: IBaseViewOptions = {
 		className: 'page',
-		id: 'home',
-		tagName: 'home-page'
+		id: 'home'
 	}) {
 		super(options);
 
