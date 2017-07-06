@@ -1,6 +1,6 @@
 {
   "name": "backbone-next-template",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Template for ES6+ Backbone.js projects written in TypeScript and built with Webpack",
   "scripts": {
     "start": "webpack-dev-server --env development",
