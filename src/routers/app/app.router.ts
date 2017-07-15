@@ -1,10 +1,11 @@
 import * as Backbone from 'backbone';
+// import { route } from 'backbone-decorators';
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 
 import App from '../../views/app/app.view';
-import { IBaseViewOptions } from '../../views/base/base.view';
 
+// @route('home')
 class AppRouter extends Backbone.Router {
 
 	application: App;

@@ -8,15 +8,13 @@ import PageView from '../page/page.view';
 class App extends Backbone.View<Backbone.Model> {
 	page: PageView;
 
-	constructor(options: IBaseViewOptions = {}) {
-		super(_.defaults(options, {el: '#root'}));
-
-		console.log('app constructor');
-	}
-
 	showHomePage(): void {
 		this.remove();
-		this.page = new HomePageView();
+
+		this.page = new HomePageView({
+			container: '#root'
+		});
+
 		this.render();
 	}
 
@@ -31,6 +29,11 @@ class App extends Backbone.View<Backbone.Model> {
 	render(): Backbone.View<Backbone.Model> {
 		if (this.page) {
 			this.page.render();
+		}
+
+		// After render custom lifecycle method
+		if (this.page) {
+			this.page.afterRender();
 		}
 
 		return super.render();
