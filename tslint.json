@@ -9,7 +9,12 @@
 		"indent": [true, "tabs", 2],
 		"no-console": [false],
 		"trailing-comma": [false],
-		"member-access": [false]
+		"member-access": [false],
+		"variable-name": [
+			true,
+			"check-format",
+			"allow-leading-underscore"
+		]
 	},
 	"rulesDirectory": []
 }
