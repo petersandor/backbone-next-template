@@ -8,12 +8,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-// TEMP
-const DEBUG = true;
-
 const ip = process.env.APP_IP || '0.0.0.0'
 const port = (+process.env.APP_PORT) || 3001
-const cssLoaderConfig = 'css-loader?importLoaders=1!postcss-loader'
 
 const config = {
 	entry: {
@@ -53,9 +49,9 @@ const config = {
 			},
 			{
 				test: /\.css$/,
-				loader: DEBUG ? `style-loader!${cssLoaderConfig}` : ExtractTextPlugin.extract({
+				loader: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use: cssLoaderConfig
+					use: 'typings-for-css-modules-loader?modules&importLoaders=1&namedExport&camelCase!postcss-loader'
 				})
 			},
 			{
@@ -106,6 +102,10 @@ const config = {
 			name: 'vendor',
 			filename: '[name].[hash].js',
 			minChunks: Infinity
+		}),
+		new ExtractTextPlugin({
+			filename: 'styles.[hash].css',
+			ignoreOrder: true
 		}),
 		new CleanWebpackPlugin(['dist'], {
 			allowExternal: true
