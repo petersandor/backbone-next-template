@@ -90,6 +90,9 @@ const config = {
 	},
 
 	plugins: [
+		new webpack.WatchIgnorePlugin([
+      /css\.d\.ts$/
+    ]),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: path.resolve(__dirname, 'src', 'index.hbs'),
