@@ -40,7 +40,7 @@ const config = {
 	module: {
 		rules: [{
 				test: /\.ts$/,
-				loader: 'awesome-typescript-loader'
+				loader: 'awesome-typescript-loader?silent=true'	// https://github.com/s-panferov/awesome-typescript-loader/issues/375
 			},
 			{
 				enforce: 'pre',
@@ -91,8 +91,8 @@ const config = {
 
 	plugins: [
 		new webpack.WatchIgnorePlugin([
-      /css\.d\.ts$/
-    ]),
+			/css\.d\.ts$/
+		]),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: path.resolve(__dirname, 'src', 'index.hbs'),

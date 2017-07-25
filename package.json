@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --env development",
     "test": "./node_modules/.bin/jest",
-    "test-dev": "npm test -- --watch"
+    "test-dev": "npm test -- --watch",
+    "bundle-analyzer": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json"
   },
   "repository": {
     "type": "git",
