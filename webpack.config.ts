@@ -1,46 +1,39 @@
-const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const DotenvPlugin = require('webpack-dotenv-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+import * as path from 'path';
+import * as webpack from 'webpack';
 
-const ip = process.env.APP_IP || '0.0.0.0'
-const port = (+process.env.APP_PORT) || 3001
+import * as CleanWebpackPlugin from 'clean-webpack-plugin';
+import * as CopyWebpackPlugin from 'copy-webpack-plugin';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+import * as HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as DotenvPlugin from 'webpack-dotenv-plugin';
 
-const config = {
+declare var __dirname;
+
+const ip = process.env.APP_IP || '0.0.0.0';
+const port = (+process.env.APP_PORT) || 3001;
+
+const config: webpack.Configuration = {
+	// Enable sourcemaps for debugging webpack's output.
+	devtool: 'source-map',
+
 	entry: {
 		app: [path.join(__dirname, 'src/bootstrap.ts')],
 		vendor: [
 			'jquery',
 			'lodash',
 			'backbone',
-			'handlebars'
+			'handlebars',
+			'material-design-lite'
 		]
 	},
-	output: {
-		path: path.join(__dirname, 'dist'),
-		filename: '[name].[hash].js'
-	},
-	resolve: {
-		extensions: ['.ts', '.js', '.json', '.hbs'],
-		modules: ['src', 'node_modules'],
-		alias: {
-			app: path.resolve(__dirname, 'src'),
-			handlebars: 'handlebars/dist/handlebars.min.js'
-		}
-	},
-
-	// Enable sourcemaps for debugging webpack's output.
-	devtool: 'source-map',
 
 	module: {
-		rules: [{
+		rules: [
+			{
 				test: /\.ts$/,
-				loader: 'awesome-typescript-loader?silent=true'	// https://github.com/s-panferov/awesome-typescript-loader/issues/375
+				// https://github.com/s-panferov/awesome-typescript-loader/issues/375
+				loader: 'awesome-typescript-loader?silent=true'
 			},
 			{
 				enforce: 'pre',
@@ -52,7 +45,24 @@ const config = {
 				loader: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: 'typings-for-css-modules-loader?modules&importLoaders=1&namedExport&camelCase!postcss-loader'
-				})
+				}),
+				exclude: [
+					path.join(__dirname, 'src/app.css'),
+					path.join(__dirname, 'node_modules')
+				],
+				include: [path.join(__dirname, 'src/views')],
+			},
+			{
+				test: /\.css$/,
+				loader: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: ['css-loader'],
+				}),
+				include: [
+					path.join(__dirname, 'src/app.css'),
+					path.join(__dirname, 'node_modules')
+				],
+				exclude: [path.join(__dirname, 'src/views')],
 			},
 			{
 				test: /\.png$/,
@@ -89,6 +99,20 @@ const config = {
 		]
 	},
 
+	output: {
+		filename: '[name].[hash].js',
+		path: path.join(__dirname, 'dist')
+	},
+
+	resolve: {
+		alias: {
+			app: path.resolve(__dirname, 'src'),
+			handlebars: 'handlebars/dist/handlebars.min.js'
+		},
+		extensions: ['.ts', '.js', '.json', '.hbs'],
+		modules: ['src', 'node_modules']
+	},
+
 	plugins: [
 		new webpack.WatchIgnorePlugin([
 			/css\.d\.ts$/
@@ -113,7 +137,7 @@ const config = {
 		new CleanWebpackPlugin(['dist'], {
 			allowExternal: true
 		}),
-	],
+	]
 };
 
-module.exports = config;
+export default config;

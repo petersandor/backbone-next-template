@@ -18,7 +18,8 @@
 			"jquery",
 			"underscore",
 			"handlebars",
-			"jest"
+			"jest",
+			"webpack"
 		]
 	},
 	"include": [
