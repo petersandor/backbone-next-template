@@ -15,7 +15,8 @@
 			"check-format",
 			"allow-leading-underscore"
 		],
-		"no-var-requires": false
+		"no-var-requires": false,
+		"object-literal-sort-keys": [false]
 	},
 	"rulesDirectory": []
 }
