@@ -1,5 +1,16 @@
-<ul class="items-list">
-	{{#each this}}
-		<li>{{text}} - {{@index}}</li>
-	{{/each}}
-</ul>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+    <tr>
+			<th>Index</th>
+      <th class="mdl-data-table__cell--non-numeric">Something</th>
+    </tr>
+  </thead>
+  <tbody>
+		{{#each this}}
+			<tr>
+				<td>{{@index}}</td>
+				<td class="mdl-data-table__cell--non-numeric">{{text}}</td>
+			</tr>
+		{{/each}}
+  </tbody>
+</table>

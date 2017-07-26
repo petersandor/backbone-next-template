@@ -10,8 +10,18 @@ import * as DotenvPlugin from 'webpack-dotenv-plugin';
 
 declare var __dirname;
 
+// Dev server settings
 const ip = process.env.APP_IP || '0.0.0.0';
 const port = (+process.env.APP_PORT) || 3001;
+
+// 3rd party stylesheets, not to be processed as CSS modules
+const globalStyles: string[] = [
+	path.join(__dirname, 'node_modules/material-design-lite')
+];
+
+const cssModules: string[] = [
+	path.join(__dirname, 'src/views')
+];
 
 const config: webpack.Configuration = {
 	// Enable sourcemaps for debugging webpack's output.
@@ -46,11 +56,8 @@ const config: webpack.Configuration = {
 					fallback: 'style-loader',
 					use: 'typings-for-css-modules-loader?modules&importLoaders=1&namedExport&camelCase!postcss-loader'
 				}),
-				exclude: [
-					path.join(__dirname, 'src/app.css'),
-					path.join(__dirname, 'node_modules')
-				],
-				include: [path.join(__dirname, 'src/views')],
+				exclude: globalStyles,
+				include: cssModules,
 			},
 			{
 				test: /\.css$/,
@@ -58,11 +65,8 @@ const config: webpack.Configuration = {
 					fallback: 'style-loader',
 					use: ['css-loader'],
 				}),
-				include: [
-					path.join(__dirname, 'src/app.css'),
-					path.join(__dirname, 'node_modules')
-				],
-				exclude: [path.join(__dirname, 'src/views')],
+				exclude: cssModules,
+				include: globalStyles
 			},
 			{
 				test: /\.png$/,
