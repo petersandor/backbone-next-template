@@ -61,7 +61,7 @@
     "typings-for-css-modules-loader": "^1.5.0",
     "webpack": "^3.3.0",
     "webpack-bundle-analyzer": "^2.8.2",
-    "webpack-dev-server": "^2.5.0",
+    "webpack-dev-server": "^2.6.1",
     "webpack-dotenv-plugin": "^2.0.2"
   },
   "jest": {
